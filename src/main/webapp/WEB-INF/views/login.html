@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        /* Добавляем стили кнопке "Sign in", чтобы она напоминала стиль Instagram */
+        .instagram-signin {
+            background-color: #405DE6; /* Цвет фона кнопки (цвет Instagram) */
+            border-color: #405DE6; /* Цвет рамки кнопки (цвет Instagram) */
+            color: #fff; /* Цвет текста кнопки */
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Плавное изменение цвета при наведении */
+        }
+
+        .instagram-signin:hover {
+            background-color: #3B5998; /* Цвет фона кнопки при наведении (цвет Instagram) */
+            border-color: #3B5998; /* Цвет рамки кнопки при наведении (цвет Instagram) */
+        }
+
+        /* Стили для центрирования контейнера */
+        .container {
+            width: 400px;
+            margin: 100px auto; /* Отступ сверху и снизу равен 100px, а отступ слева и справа автоматически выравнивается */
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Welcome</h1>
+    <form th:action="@{/user/signIn}" th:object="${newUser}" method="POST">
+        <div class="form-group">
+            <label for="username">User name</label>
+            <input type="text" th:field="*{user_name}" class="form-control" id="username">
+        </div>
+        <div class="mb-3">
+            <label for="password">Password</label>
+            <input type="text" th:field="*{password}" class="form-control" id="password">
+        </div>
+        <!-- Используем стили для кнопки "Sign in" -->
+        <button type="submit" class="btn btn-success instagram-signin">Sign in</button>
+    </form>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</html>
+
+
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: flex-end; /* Выравниваем контейнер по правому краю */
+            align-items: center; /* Центрируем контейнер по вертикали */
+            height: 100vh; /* Делаем контейнер на всю высоту видимой области */
+        }
+
+        .container {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            width: 800px; /* Увеличим ширину контейнера */
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: -150px; /* Перемещаем контейнер чуть выше */
+            margin-right: 5px; /* Перемещаем контейнер вправо */
+        }
+
+        .profile-info {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .profile-info img {
+            width: 200px; /* Уменьшим ширину изображения */
+            border-radius: 50%;
+            margin-bottom: 20px; /* Увеличим отступ снизу */
+        }
+
+        .profile-info h2 {
+            margin-bottom: 10px; /* Увеличим отступ снизу */
+            font-size: 24px;
+        }
+
+        .profile-info p {
+            margin-bottom: 10px; /* Увеличим отступ снизу */
+            font-size: 16px;
+        }
+
+        .btn-update-profile {
+            font-size: 14px;
+            margin-top: auto; /* Размещаем кнопку внизу контейнера */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="profile-info">
+        <!-- User information -->
+        <img th:src="${currentUser.getUserInfo().getImage()}" alt="Profile Picture">
+        <div>
+            <h2 th:text="${currentUser.getUser_name()}"></h2>
+            <p><strong>Name:</strong> <span th:text="${currentUser.getUserInfo().getFull_name()}"></span></p>
+            <p><strong>Biography:</strong> <span th:text="${currentUser.getUserInfo().getBiography()}"></span></p>
+        </div>
+    </div>
+
+    <div class="btn-group" style="margin-left: 20px;">
+        <a th:href="@{/profile/update/{userInfoId}(userInfoId=${currentUser.getId()})}" class="btn btn-primary btn-update-profile">Update profile</a>
+    </div>
+    <div class="btn-group" style="margin-left: 20px;">
+        <a th:href="@{/post/{userId}(userId=${currentUser.getId()})/add}" class="btn btn-primary btn-update-profile">Add post</a>
+    </div>
+
+
+</div>
+</body>
+</html>
+
+
+
